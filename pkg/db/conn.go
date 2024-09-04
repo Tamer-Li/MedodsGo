@@ -10,7 +10,7 @@ import (
 
 var ctx = context.Background()
 
-func connDB(config envRead.AppConfig) (*pgxpool.Pool, error) {
+func connDB(config *envRead.AppConfig) (*pgxpool.Pool, error) {
 	dbUrl := fmt.Sprintf("postgres://%s:%s@%s:%s/%s", config.DBUser, config.DBPass, config.DBHost, config.DBPort, config.DBName)
 	// postgres://user_name:password@localhost:5432/dbname
 	conn, err := pgxpool.New(ctx, dbUrl)
